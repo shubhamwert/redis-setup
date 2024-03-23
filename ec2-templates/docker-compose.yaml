@@ -1,0 +1,10 @@
+services:
+  terraform-cli:
+    image: hashicorp/terraform
+    environment:
+      - AWS_ACCESS=value
+    volumes:
+      - .:/terraform
+      - $HOME/.aws/credentials:/.aws/credentials:ro ## Pass your aws creds
+      - $HOME/.ssh/terraform-ec2.pub:/.ssh/terraform_ec2_key.pub
+    entrypoint: ["sleep", "infinity"]
