@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  redis-6379:
+    image: redis
+    volumes:
+      - ./conf/redis-6379.conf:/etc/redis/redis.conf
+    ports:
+      - 6379:6379
+
+  redis-6380:
+    image: redis
+    volumes:
+      - ./conf/redis-6380.conf:/etc/redis/redis.conf
+    ports:
+      - 6380:6380
+      

@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  redis-6379:
+    image: redis
+    volumes:
+      - ./master.conf:/etc/redis/redis.conf
+    networks:
+            - docker_network
+    ports:
+      - 6379:6379
+    expose:
+      - 6379
+    command: redis-server /etc/redis/redis.conf
+  redis-6380:
+    image: redis
+    volumes:
+      - ./replica.conf:/etc/redis/redis.conf
+    ports:
+      - 6380:6380
+    command: redis-server /etc/redis/redis.conf
+    networks:
+      - docker_network
+    expose:
+      - 6380
+networks:
+  docker_network:
+    driver: bridge
